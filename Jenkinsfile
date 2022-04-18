@@ -17,12 +17,8 @@ pipeline {
                 branch 'master'
             }
             steps {
-                script {
-                    app = docker.build(nginx)
-                    app.inside {
-                        sh 'echo Hello, World!'
-                    }
-                }
+               dockerImage = docker.build nginx
+                
             }
         }
         stage('Push Docker Image') {
